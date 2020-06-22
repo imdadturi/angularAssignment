@@ -30,7 +30,7 @@
 
         <nz-form-item>
           <nz-form-control>
-            <button nz-button nzBlock nzSize="large" nzType="primary" [nzLoading]="formSpinner">
+            <button nz-button nzBlock [disabled]="!this.loginForm.valid" nzSize="large" nzType="primary" [nzLoading]="formSpinner">
               <i nz-icon nzType="login" nzTheme="outline"></i> SIGN IN
             </button>
           </nz-form-control>
