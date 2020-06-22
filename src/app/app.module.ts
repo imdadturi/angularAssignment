@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
+import { AuthModule } from './auth/auth.module';
+import { HomeModule } from './home/home.module';
 
 registerLocaleData(en);
 
@@ -20,6 +22,8 @@ registerLocaleData(en);
     BrowserModule,
     AppRoutingModule,
     NgZorroAntdModule,
+    AuthModule,
+    HomeModule,
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
