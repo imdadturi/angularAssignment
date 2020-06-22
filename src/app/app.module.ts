@@ -11,12 +11,14 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { AuthModule } from './auth/auth.module';
 import { HomeModule } from './home/home.module';
+import { IamdynamicComponent } from './components/iamdynamic/iamdynamic.component';
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
     AppComponent,
+    IamdynamicComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,7 @@ registerLocaleData(en);
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [IamdynamicComponent]
 })
 export class AppModule { }

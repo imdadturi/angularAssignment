@@ -1,7 +1,7 @@
 <section class="tw-mx-auto tw-w-1/2">
 
   <div class="tw-m-3 tw-font-semibold tw-uppercase tw-text-center tw-text-2xl">Welcome!!!</div>
-  <div class="tw-rounded tw-bg-white tw-shadow tw-p-5">
+  <div class="tw-rounded tw-bg-gray-300 tw-shadow tw-p-5">
     <div nz-row>
       <div nz-col nzSpan="20">Today is {{today | date : 'fullDate'}}</div>
       <div nz-col nzSpan="4"><button nz-button nzType="default" (click)="logout()">Logout</button></div>
@@ -18,4 +18,15 @@
     </div>
   </div>
 
+  <div class="tw-rounded tw-bg-gray-300 tw-shadow tw-p-5">
+    <div nz-row>
+      <div nz-col nzSpan="20">User</div>
+      <div nz-col nzSpan="4"><button nz-button nzType="default"
+          (click)="showDetail()">{{showHide ? 'Show':'Hide'}}</button></div>
+    </div>
+  </div>
+  <div class="tw-rounded tw-bg-white tw-shadow tw-p-5" >
+    <template #infoContainer>
+    </template>
+  </div>
 </section>
