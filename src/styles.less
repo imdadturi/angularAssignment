@@ -1,0 +1,280 @@
+@import './theme.less';
+
+body {
+  letter-spacing: 1px;
+}
+
+//for input-autofill to remove background
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-animation: autofill 0s forwards;
+  animation: autofill 0s forwards;
+}
+
+.cdk-virtual-scroll-viewport,
+.scrollbar,
+.fc-scroller {
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: #cccccc;
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.1);
+  }
+
+  &::-webkit-scrollbar-thumb:window-inactive {
+    background-color: #cccccc;
+  }
+}
+
+@keyframes autofill {
+  100% {
+    background: transparent;
+  }
+}
+
+@-webkit-keyframes autofill {
+  100% {
+    background: transparent;
+  }
+}
+
+// Remove increament/decreament handels from number input fields
+input[type='number'] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+}
+
+.public-logo {
+  height: 150px;
+  object-fit: contain;
+}
+
+.ant-page-header {
+  display: flex;
+  align-items: center;
+  padding: 0px;
+  margin-bottom: @padding-lg;
+  background-color: transparent;
+
+  .ant-page-header-back {
+    flex: 0 0 50px;
+  }
+
+  .ant-page-header-title-view {
+    flex: auto;
+    justify-content: flex-start;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+
+    .ant-page-header-title-view-title {
+      font-size: 20px;
+      // color      : @primary-color;
+      text-transform: uppercase;
+    }
+
+    .ant-page-header-title-view-extra {
+      position: unset;
+      margin-left: auto;
+    }
+  }
+}
+
+.card-panel {
+  transition: box-shadow 0.25s;
+  padding: @padding-md;
+  margin: @padding-md 0 @padding-md 0;
+  border-radius: 2px;
+  background-color: @card-background;
+  box-shadow: @card-shadow;
+}
+
+.card {
+  position: relative;
+  margin: @padding-md 0 @padding-md 0;
+  transition: box-shadow 0.25s;
+  border-radius: 2px;
+  background-color: @card-background;
+  box-shadow: @card-shadow;
+
+  .card-title {
+    color: @card-head-color;
+    font-size: 20px;
+    font-weight: 300;
+
+    &.activator {
+      cursor: pointer;
+    }
+  }
+
+  // Card Sizes
+  &.small,
+  &.medium,
+  &.large {
+    position: relative;
+
+    .card-image {
+      max-height: 60%;
+      overflow: hidden;
+    }
+
+    .card-image+.card-content {
+      max-height: 40%;
+    }
+
+    .card-content {
+      max-height: 100%;
+      overflow: hidden;
+    }
+
+    .card-action {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+
+  &.small {
+    height: 300px;
+  }
+
+  &.medium {
+    height: 400px;
+  }
+
+  &.large {
+    height: 500px;
+  }
+
+  // Horizontal Cards
+  &.horizontal {
+
+    &.small,
+    &.medium,
+    &.large {
+      .card-image {
+        height: 100%;
+        max-height: none;
+        overflow: visible;
+
+        img {
+          height: 100%;
+        }
+      }
+    }
+
+    display: flex;
+
+    .card-image {
+      max-width: 50%;
+
+      img {
+        border-radius: 2px 0 0 2px;
+        max-width: 100%;
+        width: auto;
+      }
+    }
+
+    .card-stacked {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      position: relative;
+
+      .card-content {
+        flex-grow: 1;
+      }
+    }
+  }
+
+  // Sticky Action Section
+  &.sticky-action {
+    .card-action {
+      z-index: 2;
+    }
+  }
+
+  .card-image {
+    position: relative;
+
+    // Image background for content
+    img {
+      display: block;
+      border-radius: 2px 2px 0 0;
+      position: relative;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .card-title {
+      color: @card-head-color;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      max-width: 100%;
+      padding: @padding-md;
+    }
+  }
+
+  .card-content {
+    padding: @padding-md;
+    border-radius: 0 0 2px 2px;
+
+    p {
+      margin: 0;
+    }
+
+    .card-title {
+      display: block;
+      line-height: 32px;
+      margin-bottom: 8px;
+
+      i {
+        line-height: 32px;
+      }
+    }
+  }
+
+  .card-action {
+    &:last-child {
+      border-radius: 0 0 2px 2px;
+    }
+
+    background-color: inherit; // Use inherit to inherit color classes
+    border-top : 1px solid rgba(160, 160, 160, 0.2);
+    position : relative;
+    padding : 16px @padding-md;
+
+    a:not(.btn):not(.btn-large):not(.btn-floating) {
+      color: @link-color;
+      margin-right: @padding-md;
+      transition: color 0.3s ease;
+      text-transform: uppercase;
+
+      &:hover {
+        color: @link-hover-color;
+      }
+    }
+  }
+}

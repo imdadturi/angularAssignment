@@ -1,0 +1,109 @@
+<section class="tw-mx-auto tw-w-2/3">
+
+  <div class="tw-m-3 tw-font-semibold tw-uppercase tw-text-center tw-text-2xl">Sign Up</div>
+  <div class="tw-rounded tw-bg-white tw-shadow tw-p-5">
+    <div>
+      <form nz-form [formGroup]="signupForm" (ngSubmit)="formSubmit()">
+        <div nz-row nzGutter="16">
+          <div nz-col nzSpan="12">
+            <nz-form-item>
+              <nz-form-control [nzErrorTip]="first_name_Tpl">
+                <nz-form-label nzRequired="true" nzNoColon="true">First Name</nz-form-label>
+                <input type="text" nzSize="large" nz-input formControlName="first_name"
+                  placeholder="Enter first name" />
+                <ng-template #first_name_Tpl let-control>
+                  <ng-container *ngIf="control.hasError('pattern')">Only alphabets are allowed</ng-container>
+                  <ng-container *ngIf="control.hasError('required')">First Name is required</ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="12">
+            <nz-form-item>
+              <nz-form-control [nzErrorTip]="last_name_Tpl">
+                <nz-form-label nzRequired="true" nzNoColon="true">Last Name</nz-form-label>
+                <input nz-input type="text" nzSize="large" formControlName="last_name" placeholder="Enter last name" />
+                <ng-template #last_name_Tpl let-control>
+                  <ng-container *ngIf="control.hasError('pattern')">Only alphabets are allowed</ng-container>
+                  <ng-container *ngIf="control.hasError('required')">Last Name is required</ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+
+
+        </div>
+        <div nz-row nzGutter="16">
+          <div nz-col nzSpan="12">
+            <nz-form-item>
+              <nz-form-control [nzErrorTip]="username_Tpl">
+                <nz-form-label nzRequired="true" nzNoColon="true">Username</nz-form-label>
+                <input nz-input type="text" nzSize="large" formControlName="username" placeholder="Enter Username" />
+                <ng-template #username_Tpl let-control>
+                  <ng-container *ngIf="control.hasError('required')">Username is required</ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="12">
+            <nz-form-item>
+              <nz-form-label nzRequired="true" nzNoColon="true">Email</nz-form-label>
+              <nz-form-control nzErrorTip="Valid email address is required">
+                <input type="email" nz-input nzSize="large" formControlName="email" placeholder="Enter email" />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+
+        </div>
+
+        <div nz-row nzGutter="16">
+          <div nz-col nzSpan="12">
+            <nz-form-item>
+              <nz-form-label nzRequired="true" nzNoColon="true">Password</nz-form-label>
+              <nz-form-control nzErrorTip="Password is required">
+                <nz-input-group nzSize="large" [nzSuffix]="passview">
+                  <input [type]="isPassword ? 'text' : 'password'" nz-input formControlName="password"
+                    placeholder="Enter password" />
+                </nz-input-group>
+                <ng-template #passview>
+                  <i nz-icon [nzType]="isPassword ? 'eye-invisible' : 'eye'" (click)="isPassword = !isPassword"></i>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="12">
+            <nz-form-item>
+              <nz-form-label nzRequired="true" nzNoColon="true">Confirm Password</nz-form-label>
+              <nz-form-control nzErrorTip="Re password is required and must be equal to password">
+                <input type="password" nz-input nzSize="large" formControlName="password_confirmation"
+                  placeholder="Re-enter password" />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+        <div>
+          <nz-upload class="avatar-uploader" nzAction="https://jsonplaceholder.typicode.com/posts/" nzName="avatar"
+            nzListType="picture-card" [nzShowUploadList]="false" [nzBeforeUpload]="beforeUpload"
+            (nzChange)="handleChange($event)">
+            <ng-container *ngIf="!avatarUrl">
+              <i class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></i>
+              <div class="ant-upload-text">Upload</div>
+            </ng-container>
+            <img *ngIf="avatarUrl" [src]="avatarUrl" class="avatar" />
+          </nz-upload>
+        </div>
+        <nz-form-item></nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <button nz-button [disabled]="!this.signupForm.valid" nzBlock nzSize="large" nzType="primary" [nzLoading]="formSpinner">
+              <i nz-icon nzType="login" nzTheme="outline"></i>REGISTER
+            </button>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item *ngIf="formError">
+          <nz-alert nzType="error" nzMessage="ERROR!" [nzDescription]="formError"></nz-alert>
+        </nz-form-item>
+      </form>
+    </div>
+  </div>
+</section>
