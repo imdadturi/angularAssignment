@@ -21,6 +21,7 @@ export class AuthService {
   }
 
   public login(data: any) {
+    return this.regData;
   }
 
   public register(data: any) {

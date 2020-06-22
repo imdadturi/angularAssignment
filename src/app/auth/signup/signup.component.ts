@@ -61,14 +61,13 @@ export class SignupComponent implements OnInit {
 
     let formdata = this.signupForm.value;
 
-    console.log('formdata', formdata);
 
     this.formSpinner = true;
     this.auth.register(formdata).subscribe((resp: any) => {
-      this.messageService.success('Registration Successful. Use your email and password to login');
       setTimeout(() => {
+        this.messageService.success('Registration Successful. Use your email and password to login');
         this.router.navigate(['auth/login']);
-      }, 3000);
+      }, 2000);
     }, (error: any) => {
       this.formError = error.message;
       this.formSpinner = false;
@@ -129,7 +128,6 @@ export class SignupComponent implements OnInit {
         break;
       case 'done':
         // Get this url from response in real world.
-        console.log(info.file);
         this.getBase64(info.file!.originFileObj!, (img: string) => {
           this.loading = false;
           this.avatarUrl = img;

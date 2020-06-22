@@ -1,0 +1,49 @@
+<nz-spin nzSize="large" nzTip="Loading..." [nzSpinning]="pageLoader">
+  <section class="tw-mx-auto tw-w-1/2" *ngIf="!pageLoader">
+
+    <div class="tw-m-3 tw-font-semibold tw-uppercase tw-text-center tw-text-2xl">Sign In</div>
+    <div class="tw-rounded tw-bg-white tw-shadow tw-p-5">
+      <form nz-form [formGroup]="loginForm" (ngSubmit)="formSubmit()">
+        <nz-form-item>
+          <nz-form-label nzRequired="true" nzNoColon="true">Email</nz-form-label>
+          <nz-form-control nzErrorTip="Valid email address is required">
+            <nz-input-group nzSize="large" [nzSuffix]="" [nzPrefix]="usericon">
+              <input type="email" nz-input formControlName="username" placeholder="Enter email" />
+            </nz-input-group>
+            <ng-template #usericon><i nz-icon nzType="user"></i></ng-template>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzRequired="true" nzNoColon="true">Password</nz-form-label>
+          <nz-form-control nzErrorTip="Password is required">
+            <nz-input-group nzSize="large" [nzPrefix]="passicon" [nzSuffix]="passview">
+              <input [type]="isPassword ? 'text' : 'password'" nz-input formControlName="password" placeholder="Enter password" />
+            </nz-input-group>
+            <ng-template #passicon>
+              <i nz-icon nzType="lock" nzTheme="outline"></i>
+            </ng-template>
+            <ng-template #passview>
+              <i nz-icon [nzType]="isPassword ? 'eye-invisible' : 'eye'" (click)="isPassword = !isPassword"></i>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-control>
+            <button nz-button nzBlock nzSize="large" nzType="primary" [nzLoading]="formSpinner">
+              <i nz-icon nzType="login" nzTheme="outline"></i> SIGN IN
+            </button>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <div class="tw-text-right">
+              <a [routerLink]="['/auth/signup']" routerLinkActive="router-link-active" class="tw-mr-3">New User? Register</a>
+            </div>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+      <nz-alert nzBanner nzType="error" [nzMessage]="formError" *ngIf="formError"></nz-alert>
+    </div>
+  </section>
+</nz-spin>
