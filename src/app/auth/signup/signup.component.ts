@@ -51,6 +51,10 @@ export class SignupComponent implements OnInit {
     }, {
       validator: PasswordMatch('password', 'password_confirmation')
     });
+
+    if (this.auth.isLoggedIn()) {
+      this.router.navigate(['/home']);
+    }
   }
 
   public formSubmit() {

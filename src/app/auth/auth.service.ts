@@ -44,6 +44,11 @@ export class AuthService {
     return this.session;
   }
 
+  public logout() {
+    this.clearSession();
+    this.regData.next(null);
+  }
+
   public clearSession() {
     this.session = null;
     localStorage.removeItem(this.sessionStorageKey);

@@ -11,10 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  oac: any;
   pageHeader = 'Login';
-  ref: string = null;
-  backUrl: string = null;
   pageLoader = false;
   formSpinner = false;
   error: string = null;
@@ -23,6 +20,8 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
+  profile: any = {};
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -30,16 +29,19 @@ export class LoginComponent implements OnInit {
     private auth: AuthService,
     private formBuilder: FormBuilder,
   ) {
-    this.ref = this.route.snapshot.queryParamMap.get('ref');
-    this.backUrl = this.ref || '';
     this.title.setTitle(this.pageHeader);
+
   }
 
   async ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
+      username: ['imdad', Validators.required],
+      password: ['123', Validators.required],
     });
+
+    if (this.auth.isLoggedIn()) {
+      this.router.navigate(['/home']);
+    }
 
     this.pageLoader = true;
     setTimeout(() => {
@@ -68,7 +70,6 @@ export class LoginComponent implements OnInit {
         }
         this.formSpinner = false;
       }, 2000);
-      // this.auth.setSession(resp.record);
 
     }, (error: any) => {
       this.formError = error.message;

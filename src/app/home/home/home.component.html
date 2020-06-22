@@ -1,1 +1,20 @@
-<p>home works!</p>
+<section class="tw-mx-auto tw-w-1/2">
+
+  <div class="tw-m-3 tw-font-semibold tw-uppercase tw-text-center tw-text-2xl">Welcome!!!</div>
+  <div class="tw-rounded tw-bg-white tw-shadow tw-p-5">
+    <div nz-row>
+      <div nz-col nzSpan="20">Today is {{today | date : 'fullDate'}}</div>
+      <div nz-col nzSpan="4"><button nz-button nzType="default" (click)="logout()">Logout</button></div>
+    </div>
+
+  </div>
+  <div class="tw-rounded tw-bg-white tw-shadow tw-p-5">
+    <h3>Quote of the Day</h3>
+    <div class="tw-text-center">
+      <span nz-text nzType="warning">{{quoteNum | quotePipe}}</span>
+    </div>
+    <div class="tw-text-center">
+      <button nz-button nzType="link" (click)="generateQuote()">change</button>
+    </div>
+  </div>
+</section>
