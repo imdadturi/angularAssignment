@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   componentRef: any;
   showHide = true;
 
-  @ViewChild('infoContainer', { read: ViewContainerRef }) entry: ViewContainerRef;
+  @ViewChild('infoContainer', { read: ViewContainerRef, static: false }) entry: ViewContainerRef;
 
   constructor(
     private auth: AuthService,
